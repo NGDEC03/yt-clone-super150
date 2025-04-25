@@ -12,20 +12,36 @@ export default function Feed() {
     }, [])
 
     return (
-        <div className="flex justify-center items-center flex-wrap">
+        <div className="flex justify-center items-start flex-wrap p-4 bg-gray-900 min-h-screen">
             { videos && videos.map((video) => (
-                <div className="w-[400px] m-[30px] cursor-pointer" key={video.id.videoId}>
-                    <img src={video.snippet.thumbnails.default.url} alt="" className="w-[400px] cursor-pointer" />
-                    <div className="cursor-pointer">{video.snippet.title}</div>
-                    <div className="flex justify-start items-center">
-                        {/* <div className=" cursor-pointer rounded-[500px] overflow-hidden w-[30px] h-[30px] mr-[10px]">
-                            <img src="/UI/mainadmin.jpg" alt="" className="w-[30px] h-[30px]" />
-                        </div> */}
-                        <div className="cursor-pointer">{video.snippet.channelTitle}</div>
-                        <pre>   </pre>
-                        <div>1345 views</div>
-                        <pre>   </pre>
-                        <div>9 months ago</div>
+                <div className="w-[320px] m-4 cursor-pointer group" key={video.id.videoId}>
+                    <div className="relative overflow-hidden rounded-xl">
+                        <img 
+                            src={video.snippet.thumbnails.default.url} 
+                            alt="" 
+                            className="w-full h-[180px] object-cover transition-transform duration-300 group-hover:scale-105" 
+                        />
+                        <div className="absolute bottom-0 right-0 bg-black bg-opacity-80 text-white text-xs px-2 py-1 m-2 rounded">
+                            10:30
+                        </div>
+                    </div>
+                    <div className="mt-3">
+                        <h3 className="text-white font-medium line-clamp-2 hover:text-blue-400 transition-colors">
+                            {video.snippet.title}
+                        </h3>
+                        <div className="flex items-center mt-2 text-gray-400 text-sm">
+                            <div className="flex items-center">
+                                <div className="w-6 h-6 rounded-full overflow-hidden mr-2">
+                                    <img src="/UI/mainadmin.jpg" alt="" className="w-full h-full object-cover" />
+                                </div>
+                                <span className="hover:text-white transition-colors">{video.snippet.channelTitle}</span>
+                            </div>
+                            <div className="flex items-center ml-4">
+                                <span>1.3K views</span>
+                                <span className="mx-1">•</span>
+                                <span>9 months ago</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             )) }
